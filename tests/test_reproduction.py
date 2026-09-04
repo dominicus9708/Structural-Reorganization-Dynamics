@@ -18,3 +18,11 @@ def test_all_reproducibility_checks_pass() -> None:
 def test_check_names_are_unique() -> None:
     names = [r.name for r in run_all_checks()]
     assert len(names) == len(set(names))
+
+
+def test_release_2_layering_checks_are_present() -> None:
+    names = {r.name for r in run_all_checks()}
+    assert "property_status_partition" in names
+    assert "realized_axis_rank_transition" in names
+    assert "first_order_characteristic_bound" in names
+    assert "directional_entropy_resolution_and_distribution" in names
