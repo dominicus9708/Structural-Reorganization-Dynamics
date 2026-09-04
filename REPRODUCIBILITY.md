@@ -1,10 +1,10 @@
-# Reproducibility protocol
+# Reproducibility protocol — release 2.0
 
 ## 1. Purpose
 
-The code reproduces finite witnesses and exact specializations stated in *Structural Reorganization Dynamics in Dimensional-Structural Describability*.
+The code reproduces finite witnesses and exact analytic specializations stated in the revised *Structural Reorganization Dynamics in Dimensional-Structural Describability*.
 
-The governing rule is conservative: executable agreement supports the displayed construction; it does not replace a general proof.
+Release 2.0 mirrors the manuscript hierarchy: the general dynamic core does not require a Property model or realized-axis geometry; those are optional interfaces when the selected model uses them.
 
 ## 2. Environment
 
@@ -34,6 +34,12 @@ The command exits with code `0` only when every declared check passes.
 python -m pytest -q
 ```
 
+The release-2.0 baseline is:
+
+```text
+Structural Reorganization Dynamics 2.0 reproducibility: 18/18 checks passed
+```
+
 ## 5. Deterministic outputs
 
 The main run writes:
@@ -41,24 +47,34 @@ The main run writes:
 - `results/reproduction_summary.json`
 - `results/reproduction_summary.md`
 
-No random seed is needed because the current baseline uses exact symbolic and deterministic finite constructions.
+No random seed is needed because the baseline uses exact symbolic and deterministic finite constructions.
 
-## 6. Status of the checks
+## 6. Layer discipline
+
+Checks are interpreted in three principal layers.
+
+1. **General dynamic/analytic core** — Formation-fixed trajectories, lineage, analytic terms, propagation, characteristic analysis, metric-direction entropy, identity diagnostics, and reduced readouts.
+2. **Optional Property interface** — typed Property Axiom System statuses and explicitly supplied constitutive bridges.
+3. **Optional realized-axis specialization** — line motion, realized-axis rank, and rank-restricted countermodels.
+
+A check in a specialization is not promoted to a universal statement about every DSD dynamic model.
+
+## 7. Status of executable evidence
 
 The package distinguishes four levels:
 
-1. **Exact finite witness** - direct reproduction of a displayed countermodel or finite relation.
-2. **Exact algebraic identity** - symbolic verification of an identity used by the manuscript.
-3. **Representative analytic specialization** - a concrete model satisfying a more general definition or theorem hypothesis.
-4. **Manuscript-only general proof** - a theorem whose full quantifiers, regularity hypotheses, or PDE estimates are not reduced to finite computation.
+1. **Exact finite witness** — direct reproduction of a displayed countermodel or finite relation.
+2. **Exact algebraic identity** — symbolic verification of an identity used by the manuscript.
+3. **Representative analytic specialization** — a concrete model satisfying a more general definition or theorem hypothesis.
+4. **Manuscript-only general proof** — a theorem whose full quantifiers, regularity hypotheses, or PDE estimates are not reduced to finite computation.
 
-In particular, the symmetric-hyperbolic finite-propagation theorem remains a manuscript proof supported by standard hyperbolic PDE mathematics. The executable scalar transport check is not presented as its replacement.
+The symmetric-hyperbolic finite-propagation theorem remains a manuscript proof. The scalar transport check is a specialization of the propagation definition, not a replacement proof.
 
-## 7. Input/output paths
+## 8. Input/output paths
 
 This baseline requires no external dataset.
 
-Input is encoded directly as the manuscript's finite witness data in:
+Input is encoded directly as finite witness data in:
 
 ```text
 src/reproduce_dynamics.py
@@ -70,4 +86,4 @@ Output begins at:
 results/
 ```
 
-This is a proof-audit pipeline rather than an observational `raw -> derived -> theory layer` data pipeline.
+This is a proof-audit pipeline rather than an observational data pipeline.
