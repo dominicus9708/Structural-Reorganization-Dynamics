@@ -1,43 +1,51 @@
-# Structural Reorganization Dynamics - reproducibility summary
+# Structural Reorganization Dynamics - reproducibility summary (2.0)
 
 Passed: **18/18** executable checks.
 
-These checks reproduce finite witnesses, algebraic identities, and representative specializations from the manuscript. They do not replace the manuscript proofs of general analytic theorems.
+The 2.0 baseline separates the general dynamic core, the optional general Property interface, and optional realized-axis specializations. The local regression suite also passed: **3/3 tests**.
 
 | Check | Status | Manuscript scope |
 |---|---:|---|
-| `constant_trajectory_static_recovery` | PASS | Propositions: constant-trajectory extension and fixed-time static recovery |
-| `canonical_fixed_background_lineage` | PASS | Proposition: canonical fixed-background lineage |
-| `finite_lineage_branching` | PASS | Toy model: finite lineage branching |
-| `smooth_line_rank_transition` | PASS | Example: smooth line path with rank transition |
-| `component_term_differentiation` | PASS | Proposition: component-term differentiation under fixed measure |
-| `variable_measure_reference_density` | PASS | Appendix: reference-density derivative with variable measure |
-| `constitutive_bridge_nonuniqueness` | PASS | Proposition: no dynamic coefficient determination from a property label/value alone |
-| `scalar_transport_finite_support` | PASS | Analytic specialization of the finite-propagation definition for `u_t + beta u_x = 0` |
-| `first_order_characteristic_bound` | PASS | Section: first-order characteristic upper bound |
-| `rank_one_nonunique_characteristic_speed` | PASS | Proposition: no universal rank-only characteristic law |
-| `dimension_independent_isotropic_wave_speed` | PASS | Countermodel: isotropic second-order characteristic speed does not obey universal `sqrt(N)` scaling |
-| `rms_sqrtN_special_model` | PASS | Appendix: RMS directional special model |
-| `directional_entropy_resolution_and_distribution` | PASS | Section: covering-number and distributional directional entropy |
-| `identity_front_bound` | PASS | Proposition: identity-front diagnostic rate is bounded by an admissible infimal propagation bound under stated assumptions |
-| `rank_closure_logical_independence` | PASS | Countermodels: closure-associated property change at fixed rank and rank change at fixed closure-associated property |
-| `same_aggregate_different_component_state` | PASS | Proposition/toy model: aggregate cancellation does not erase component-resolved distinction |
-| `undefined_vs_defined_zero` | PASS | Toy model: status data distinguish undefined application from defined zero |
-| `Dw_readout_collision` | PASS | Proposition: equal `D_w(t)` does not imply equal component-resolved dynamic state |
+| `constant_trajectory_static_recovery` | PASS | General dynamic core; no mandatory Property or realized-axis data |
+| `canonical_fixed_background_lineage` | PASS | General dynamic core: canonical fixed-background channel lineage |
+| `finite_lineage_branching` | PASS | General dynamic core: finite component-lineage branching witness |
+| `property_status_partition` | PASS | Optional Property interface: current PAS status distinctions and explicit coarse status map |
+| `realized_axis_rank_transition` | PASS | Realized-axis specialization: smooth rank transition at fixed formation-channel support |
+| `component_term_differentiation` | PASS | General analytic realization: fixed-measure component-term differentiation |
+| `variable_measure_reference_density` | PASS | General analytic realization: variable-measure reference-density product rule |
+| `constitutive_bridge_requires_explicit_choice` | PASS | Optional Property interface: two explicit bridges over the same typed property record |
+| `scalar_transport_finite_support` | PASS | General propagation specialization for scalar transport |
+| `first_order_characteristic_bound` | PASS | General first-order characteristic bound without realized-axis assumptions |
+| `rank_one_nonunique_characteristic_speed` | PASS | Realized-axis specialization: rank alone does not determine characteristic speed |
+| `dimension_independent_isotropic_wave_speed` | PASS | General isotropic second-order speed example across dimensions `1..8` |
+| `rms_sqrtN_special_model` | PASS | Appendix RMS capacity specialization; not a universal propagation law |
+| `directional_entropy_resolution_and_distribution` | PASS | Metric-direction covering/Shannon entropy without required rank input |
+| `identity_front_bound` | PASS | One exact identity-front diagnostic inequality instance |
+| `rank_specialized_property_independence` | PASS | Realized-axis specialization: rank and selected property assignment are independent without an added law |
+| `same_aggregate_different_component_state` | PASS | Aggregate cancellation with distinct component-resolved states |
+| `Dw_readout_collision` | PASS | Equal `D_w` with distinct component-resolved dynamic states |
 
 ## Key exact outputs
 
-- Rank-transition witness: determinant `t`, rank `1` at `t=0`, rank `2` at every sampled nonzero time.
+- General constant trajectory: aggregate `1` at each sampled time with no Property model or realized-axis data in the state.
+- Property status audit: undeclared, profile unavailable, inapplicable, prerequisite unsatisfied, applicable but undefined, defined zero, and defined nonzero/value remain distinct before any declared coarse map.
+- Defined zero remains distinct from applicable-but-undefined under the sample coarse map.
+- Realized-axis rank witness: determinant `t`, rank `1` at `t=0`, rank `2` at every sampled nonzero time.
 - Component-term derivative: both sides reduce to `t/3 + 1/2`.
 - Variable-measure derivative: both sides reduce to `9*t**2/20 + 7*t/6 + 5/6`.
-- First-order characteristic example: transport vector `(3,4)` gives exact supremum `5`.
-- Rank-one counterexample: identical rank `1`, speeds `1` and `3`.
-- Isotropic second-order countermodel: `m=4`, `k=9` gives speed `3/2` for dimensions `1..8`.
+- Constitutive bridge witness: the same typed property record produces outputs `2` and `5` under two explicitly supplied bridges.
+- First-order characteristic example: transport vector `(3,4)` gives exact supremum `5` without a realized-axis assumption.
+- Rank-one specialization: identical realized-axis rank `1`, characteristic speeds `1` and `3`.
+- Isotropic second-order example: `m=4`, `k=9` gives speed `3/2` for dimensions `1..8`.
 - RMS special model: `||v||_2 = sqrt(N)c_0` reproduced exactly for `N=1..8`.
-- Directional finite metric example: covering number `4` at `epsilon=0.5`, `1` at `epsilon=1`, empty direction space remains undefined.
+- Directional finite metric example: covering number `4` at `epsilon=0.5`, `1` at `epsilon=1`, with the empty direction space left undefined.
 - Identity-front example: `ell=6`, `Delta t=3` gives `c_front=2 <= c_info=5/2`.
-- Rank/closure independence: fixed rank `3` with closure values `0` and `1`; fixed closure `0` with ranks `1` and `2`.
+- Rank/property specialization independence: fixed rank `3` with property values `0` and `1`; fixed property `0` with ranks `1` and `2`.
 - Aggregate collision: both aggregate values vanish while component functions differ.
 - `D_w` collision: weights `1` and `2x` are distinct but both normalize to `1` and both give `D_w=1` on `[0,1]` with local scaling exponent `1`.
 
-The full machine-readable details are in `reproduction_summary.json` and can be regenerated with `python src/reproduce_dynamics.py --output results`.
+The machine-readable summary is generated by:
+
+```powershell
+python "src\reproduce_dynamics.py" --output "results"
+```
