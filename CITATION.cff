@@ -6,11 +6,12 @@ authors:
   - family-names: Kwon
     given-names: Dominicus
 repository-code: "https://github.com/dominicus9708/Structural-Reorganization-Dynamics"
-date-released: 2026-08-12
-version: 0.1.0
+date-released: 2026-09-04
+version: 2.0
 keywords:
   - Dimensional-Structural Describability
   - structural reorganization
+  - typed properties
   - reproducibility
   - hyperbolic propagation
-  - realized axes
+  - realized-axis specialization
